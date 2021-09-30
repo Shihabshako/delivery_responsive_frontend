@@ -22,6 +22,7 @@ window.onscroll = () => {
     if (top >= offset && top < offset + height) {
       navLinks.forEach((links) => {
         
+        
         links.classList.remove("active");
         document
           .querySelector("header .nav a[href*='" + id + "']")
@@ -33,28 +34,28 @@ window.onscroll = () => {
 
 // counter
 
-$(".counting").each(function () {
-  var $this = $(this),
-    countTo = $this.attr("data-count");
+// $(".counting").each(function () {
+//   var $this = $(this),
+//     countTo = $this.attr("data-count");
 
-  $({ countNum: $this.text() }).animate(
-    {
-      countNum: countTo,
-    },
+//   $({ countNum: $this.text() }).animate(
+//     {
+//       countNum: countTo,
+//     },
 
-    {
-      duration: 3000,
-      easing: "linear",
-      step: function () {
-        $this.text(Math.floor(this.countNum));
-      },
-      complete: function () {
-        $this.text(this.countNum);
-        //alert('finished');
-      },
-    }
-  );
-});
+//     {
+//       duration: 3000,
+//       easing: "linear",
+//       step: function () {
+//         $this.text(Math.floor(this.countNum));
+//       },
+//       complete: function () {
+//         $this.text(this.countNum);
+//         //alert('finished');
+//       },
+//     }
+//   );
+// });
 
 $(document).ready(function () {
   $(".customer-logos").slick({
@@ -150,4 +151,28 @@ $(document).ready(function() {
     //   freeScroll: true,
     //   autoPlay: 1600
     // });
+
+
+    $(document).ready(function () {
+        
+        $(".counter").each(function () {
+          $(this)
+            .prop("Counter", 0)
+            .animate(
+              {
+                Counter: $(this).text(),
+              },
+              {
+                duration: 2000,
+                easing: "swing",
+                step: function (now) {
+                  $(this).text(Math.ceil(now));
+                },
+              }
+            );
+        });
+      
+    });
+    
+
     
